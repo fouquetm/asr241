@@ -1,9 +1,9 @@
 resource "azurerm_container_group" "hello-world" {
-  name                = "ci-asr241-hello-world"
+  name                = "ci-${var.project_name}-hello-world"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
   ip_address_type     = "Public"
-  dns_name_label      = "aci-asr241-teacher"
+  dns_name_label      = "aci-${var.project_name}-teacher"
   os_type             = "Linux"
 
   exposed_port = [
@@ -26,6 +26,6 @@ resource "azurerm_container_group" "hello-world" {
   }
 
   tags = {
-    environment = "testing"
+    environment = "Production"
   }
 }
